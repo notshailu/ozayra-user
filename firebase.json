@@ -1,0 +1,7 @@
+{
+  "react-native": {
+    "messaging_auto_init_enabled": true,
+    "messaging_android_notification_channel_id": "ozayra_orders_high",
+    "messaging_android_notification_delegation_enabled": false
+  }
+}

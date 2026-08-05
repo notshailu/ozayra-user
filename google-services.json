@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "916195742708",
+    "firebase_url": "https://ozayra-16608-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "ozayra-16608",
+    "storage_bucket": "ozayra-16608.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916195742708:android:085614138cf051c06e1fa1",
+        "android_client_info": {
+          "package_name": "com.ozayra.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNLh7MYYwobJl5yjCa6oQmgqthIOYWtoI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

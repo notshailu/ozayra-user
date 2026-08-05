@@ -1,0 +1,83 @@
+{
+  "expo": {
+    "name": "Ozayra",
+    "slug": "ozayra",
+    "version": "1.0.2",
+    "orientation": "portrait",
+    "icon": "./assets/images/image_transparent.png",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FBBB01"
+    },
+    "scheme": "ozayra",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": false,
+    "androidNavigationBar": {
+      "visible": "sticky-immersive"
+    },
+    "ios": {
+      "bundleIdentifier": "com.ozayra.app",
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Ozayra uses your location to show nearby restaurants and improve delivery experience.",
+        "NSMicrophoneUsageDescription": "Ozayra uses your microphone for voice search."
+      }
+    },
+    "android": {
+      "googleServicesFile": "./google-services.json",
+      "allowBackup": false,
+      "versionCode": 3,
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "RECORD_AUDIO",
+        "POST_NOTIFICATIONS",
+        "RECEIVE_BOOT_COMPLETED",
+        "VIBRATE",
+        "WAKE_LOCK"
+      ],
+      "adaptiveIcon": {
+        "backgroundColor": "#FBBB01",
+        "foregroundImage": "./assets/images/image_transparent.png"
+      },
+      "splash": {
+        "image": "./assets/images/splash.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#FBBB01"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.ozayra.app"
+    },
+    "web": {
+      "favicon": "./assets/images/image_transparent.png"
+    },
+    "plugins": [
+      "./withNotifeeProjectGradle.js",
+      "@react-native-firebase/app",
+      "@react-native-firebase/messaging",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Ozayra uses your location to show nearby restaurants and improve delivery experience."
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash.png",
+          "imageWidth": 220,
+          "resizeMode": "contain",
+          "backgroundColor": "#FBBB01",
+          "dark": {
+            "backgroundColor": "#FBBB01"
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "reactCompiler": true
+    }
+  }
+}
