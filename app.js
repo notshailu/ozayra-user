@@ -77,17 +77,7 @@ function isDiningRestaurantPage(pathname) {
 }
 
 function shouldShowWhitePatch(pathname) {
-  const normalizedPathname = normalizePathname(pathname);
-
-  if (noWhitePatchRoutes.includes(normalizedPathname)) {
-    return false;
-  }
-
-  if (isDiningRestaurantPage(normalizedPathname)) {
-    return false;
-  }
-
-  return true;
+  return false;
 }
 
 function matchesPathPrefix(pathname, prefix) {
@@ -1013,6 +1003,16 @@ function AppContent() {
   const lastBackPressAtRef = useRef(0);
   const activeLocationWatchesRef = useRef(new Set());
   const locationSubscriptionRef = useRef(null);
+
+  const retryConnection = () => {
+    if (netInfo.isConnected === false) {
+      Alert.alert(
+        "Checking Connection",
+        "Please ensure your device is connected to the internet. The app will automatically resume when the connection is restored."
+      );
+    }
+  };
+
 
   useEffect(() => {
     if (Platform.OS === "android") {
@@ -2006,21 +2006,51 @@ function AppContent() {
 
   if (netInfo.isConnected === false) {
     return (
-      <View style={{ flex: 1, backgroundColor: "#fff", justifyContent: "center", alignItems: "center", padding: 20 }}>
-        <StatusBar hidden={false} barStyle="dark-content" backgroundColor="#ffffff" />
-        <View style={{ width: 100, height: 100, borderRadius: 50, backgroundColor: "#ffebee", justifyContent: "center", alignItems: "center", marginBottom: 20 }}>
-          <Text style={{ fontSize: 40 }}>📶</Text>
+      <View style={{ flex: 1, backgroundColor: "#F9FAFB", justifyContent: "center", alignItems: "center", padding: 24 }}>
+        <StatusBar hidden={false} barStyle="dark-content" backgroundColor="#F9FAFB" />
+        
+        {/* Glowing Icon Container */}
+        <View style={{ marginBottom: 48, alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{ width: 180, height: 180, borderRadius: 90, backgroundColor: 'rgba(251, 187, 1, 0.05)', position: 'absolute' }} />
+          <View style={{ width: 140, height: 140, borderRadius: 70, backgroundColor: 'rgba(251, 187, 1, 0.1)', position: 'absolute' }} />
+          <View style={{ width: 100, height: 100, borderRadius: 50, backgroundColor: 'rgba(251, 187, 1, 0.15)', alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{ width: 70, height: 70, borderRadius: 35, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center', shadowColor: '#000', shadowOffset: { width: 0, height: 10 }, shadowOpacity: 0.08, shadowRadius: 20, elevation: 5 }}>
+              <Text style={{ fontSize: 32 }}>📡</Text>
+            </View>
+          </View>
         </View>
-        <Text style={{ fontSize: 24, fontWeight: "bold", color: "#333", marginBottom: 10, textAlign: "center" }}>No Internet Connection</Text>
-        <Text style={{ fontSize: 16, color: "#666", textAlign: "center", marginBottom: 30 }}>
-          Please check your network settings and try again.
+
+        <Text style={{ fontSize: 28, fontWeight: "800", color: "#111827", marginBottom: 12, textAlign: "center", letterSpacing: -0.5 }}>
+          Oops, No Connection
         </Text>
+        
+        <Text style={{ fontSize: 16, color: "#6B7280", textAlign: "center", marginBottom: 40, lineHeight: 24, paddingHorizontal: 20 }}>
+          It seems you're currently offline. Please check your network settings and try again.
+        </Text>
+
         <TouchableOpacity 
-          style={{ backgroundColor: "#FBBB01", paddingHorizontal: 30, paddingVertical: 15, borderRadius: 12, elevation: 2, shadowColor: "#000", shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.2, shadowRadius: 3 }}
-          activeOpacity={0.8}
+          style={{ 
+            backgroundColor: "#FBBB01", 
+            paddingHorizontal: 32, 
+            paddingVertical: 18, 
+            borderRadius: 100, 
+            flexDirection: 'row', 
+            alignItems: 'center',
+            justifyContent: 'center',
+            shadowColor: "#FBBB01", 
+            shadowOffset: { width: 0, height: 8 }, 
+            shadowOpacity: 0.4, 
+            shadowRadius: 16, 
+            elevation: 8,
+            width: '100%',
+            maxWidth: 300
+          }}
+          activeOpacity={0.85}
           onPress={retryConnection}
         >
-          <Text style={{ color: "#fff", fontSize: 16, fontWeight: "bold" }}>Please Connect to Internet</Text>
+          <Text style={{ color: "#111827", fontSize: 16, fontWeight: "700", letterSpacing: 0.3 }}>
+            Check Connection
+          </Text>
         </TouchableOpacity>
       </View>
     );
